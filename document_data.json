@@ -1,0 +1,140 @@
+[
+    {
+        "tipo": "CPF",
+        "numero": "06944116120",
+        "nome": "ALICE ADANIA REBELO",
+        "nascimento": "2019-07-21"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06574645115",
+        "nome": "ARTHUR MASUJI HAYASHI PESSOA",
+        "nascimento": "2009-09-20"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07412037153",
+        "nome": "BEATRIZ YURI WATANABE",
+        "nascimento": "1999-11-01"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07339470182",
+        "nome": "CLARA HINATA ALVES INOUE",
+        "nascimento": "2023-12-25"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06475779172",
+        "nome": "DEBORA MEGUMI OGATA",
+        "nascimento": "2015-07-09"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07007493149",
+        "nome": "FELIPE MIAMOTO SANTOS",
+        "nascimento": "2020-04-18"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06791220104",
+        "nome": "HIKARI ALICE INADA",
+        "nascimento": "2022-02-02"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06574769191",
+        "nome": "JOAO HIRO PESSOA HAYASHI",
+        "nascimento": "2019-02-09"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06574300134",
+        "nome": "LIAM KITAGAKI",
+        "nascimento": "2021-10-03"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07601891100",
+        "nome": "LORENZO YUKIHIDE MAKI",
+        "nascimento": "2013-09-11"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07339216120",
+        "nome": "MARINA LUMI MAEKAVA",
+        "nascimento": "1996-05-14"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07544308120",
+        "nome": "MAYA JITIAKO ROCHA",
+        "nascimento": "2023-07-13"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06870066191",
+        "nome": "MITSUKI URAKAMI",
+        "nascimento": "2023-09-12"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07213069187",
+        "nome": "MYLA MAYUMI MAEOKA",
+        "nascimento": "2022-06-12"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07544111172",
+        "nome": "PEDRO KAITO KISHIMOTO",
+        "nascimento": "2020-06-03"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06943721100",
+        "nome": "REBECCA AIRI OGATA DAGALA",
+        "nascimento": "2015-03-27"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07474318172",
+        "nome": "RENAN VILHORA",
+        "nascimento": "1990-09-29"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07213751115",
+        "nome": "SOFIA ANNA KOGA",
+        "nascimento": "2014-02-26"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07212860115",
+        "nome": "THI THOM NGUYEN",
+        "nascimento": "1989-02-07"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07061528168",
+        "nome": "WENDY SARAH SHIGA",
+        "nascimento": "2006-04-27"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06944655187",
+        "nome": "YUKA YAMATO",
+        "nascimento": "1984-09-16"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "06869289115",
+        "nome": "YUKI SHIROMOTO CARVALHO",
+        "nascimento": "2001-04-06"
+    },
+    {
+        "tipo": "CPF",
+        "numero": "07007531172",
+        "nome": "YUNA PEREIRA HASHIMOTO",
+        "nascimento": "2024-03-19"
+    }
+]
