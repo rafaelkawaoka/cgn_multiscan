@@ -1,0 +1,49 @@
+ body{
+		font-family: arial, verdana, helvetica;            
+}
+              
+.clTitulo1{    
+		font-size:   15px;
+}       
+.clTitulo2{
+		font-size:   15px;
+}       
+.clTitulo3{
+		font-size:   15px;
+}
+.clConteudoDados{
+		font-size:   15px;
+}
+.clConteudoComp{
+		font-size:   15px;
+}
+.clConteudoCompBold{
+	font-size:   15px;
+	font-weight: bold;
+	text-align:	 center;
+}
+.clConteudoRodape{
+	font-size:  12px;
+}
+.clConteudoAviso{
+	font-weight: bold;
+	font-size:   15px;
+}
+              
+.clConteudoEsquerda{
+	text-align:	 left;
+	margin-left: 80px;
+}
+
+.clConteudoCentro{
+	text-align:	 center;
+}                
+
+#idImpressao{
+	text-align:	 right;
+}
+#idRodape
+{
+	text-align:	 center;
+}
+

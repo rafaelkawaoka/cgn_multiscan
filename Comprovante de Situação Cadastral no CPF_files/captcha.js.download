@@ -1,0 +1,179 @@
+// JAVA SCRIPT CAPTCHA
+// DESENVOLVIDO PELA ATHBE/ATWEB
+// EQUIPE DO PROJETO INTERCEPTA-001
+
+// MÉTODOS OBRIGATÓRIOS
+
+// Valida os caracteres de letra e som digitados
+// Também é fornecido o nome do formulário principal e a página de destino após validação
+function validaCaracteresCaptcha(nomeForm, idLetra, idSom, paginaDestino) {
+	var form = document.getElementById(nomeForm);
+	if (document.getElementById(idLetra).value == "" && document.getElementById(idSom).value == "")
+	{
+		 AlertaCaptcha("Favor preencher algum dos campos de validação");
+		 form.action= "";
+		 return false;
+	}
+	
+	if (document.getElementById(idLetra).value != "" && document.getElementById(idSom).value != "")
+	{
+		 AlertaCaptcha("Favor preencher apenas um dos campos de validação");
+		 form.action="";
+		 return false;
+	}
+	
+	form.action=paginaDestino;
+	return true;
+}
+
+// Função que inclui no código a chamada ao Flash e exibe o spanSom para que o usuário
+// digite os números do idSom
+// O document.location.protocol é necessário para funcionar no IE6, 7 e 8 não dar alerta quando estiver em SSL
+function playCaptcha(container, idSom, spanSom) 
+{
+    str = '';
+    str += '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"'
+    str += ' codebase="' + document.location.protocol +'//fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"'
+    str += ' width="1"'
+    str += ' height="1"'
+    str += ' id="sound"'
+    str += ' align="middle">'
+    str += '<param name="allowScriptAccess" value="sameDomain" />'
+    str += '<param name="movie" value="/scripts/srf/intercepta/captcha.swf" />'
+    str += '<param name="quality" value="high" />'
+    str += '<param name="bgcolor" value="#ffffff" />'
+    str += '<embed src="/scripts/srf/intercepta/captcha.swf" quality="high" bgcolor="#ffffff"'
+    str += ' width="1"'
+    str += ' height="1"'
+    str += ' name="sound"'
+    str += ' align="middle"'
+    str += ' allowScriptAccess="sameDomain" type="application/x-shockwave-flash"'
+    str += ' pluginspage=' + document.location.protocol + '//www.macromedia.com/go/getflashplayer" />'
+    str += '</object>'
+
+    document.getElementById(container).innerHTML=str;
+    
+    document.getElementById(spanSom).style.visibility="visible";
+    document.getElementById(idSom).focus();
+
+    return void(0);
+}
+
+
+
+
+// Exibe caixa de alerta com a mensagem passada através do parâmetro
+function AlertaCaptcha(strMsg)
+{
+window.alert(strMsg)
+}
+
+// Recupera uma referência ao objeto com o id especificado
+// Funciona primariamente com o DOM, mas também aceita document.all
+function pegaObjCaptcha( id ) {
+
+	if ( typeof(document.getElementById) != 'undefined' )
+		return document.getElementById( id );
+	else if ( document.all ) {
+		return document.all( id );
+	}
+}
+
+// Função chamada no evento onKeyDown para evitar que caracteres não numéricos
+// sejam inseridos no campo indicado.
+// Parâmetros:
+// input: referência para o objeto <input> que recebeu o evento
+// e: o objeto event
+function ajustarNumeroCaptcha(input, e) {
+
+	var k;
+
+	// e.which: explorer, e.keyCode: mozilla
+	if (e && e.which)
+		k = e.which;
+	else
+		k = e.keyCode;
+
+	// No IE não essa função não consegue cancelar tabs, BS, DEL, etc, mas no mozilla sim,
+	// por isso precisamos deixar passar as teclas de edição.
+	// Somente aceita os caracteres 0-9, tab, enter, del e BS
+	if ( ((k<48)||(k>57)) && k != 8 && k != 9 && k != 127 && k != 13 && !((k>34)&&(k<41)) && k != 46 ) {
+		e.returnValue = false;
+		return false;
+	}
+
+	return true;
+}
+
+// Função chamada no keyup
+// Se a tecla pressionada for numérica e o número máximo de caracteres foi alcançado,
+// muda para o próximo campo
+// Parâmetros:
+// input: referência para o objeto <input> que recebeu o evento
+// e: o objeto event
+function pularCampoCaptcha(input, e) {
+
+	var k = -1;
+
+	// e.which: explorer, e.keyCode: mozilla
+	if (e && e.which)
+		k = e.which;
+	else
+		k = e.keyCode;
+
+	// Somente mudamos de campo se a tecla levantada pode ter gerado uma entrada ('0'-'9')
+	// Aqui estão dois grupos, pois os 2 teclados numéricos enviam códigos diferentes!
+	if ( (k >= 48 && k<= 57) || (k >= 96 && k<= 105) || k==13 )
+		// Verificamos se este campo tem limite de tamanho e movemos para o próximo se já o alcançamos
+		if ( typeof( inputList[input.id] ) != 'undefined' ) {
+			// Foi pressionada uma tecla que escreve algo e o tamanho já está completo?
+			if ( input.value.length == inputList[input.id]['tamanho'] )
+				pegaObjCaptcha( inputList[input.id]['proximo'] ).focus();
+		}
+}
+
+// Função específica do IE, que busca as informações do evento
+// e repassa para as rotina em si "ajustarNumeroCaptcha" e "pularCampoCaptcha"
+function ajustarNumeroCaptchaIE() {
+
+	e = window.event;
+	input = pegaObjCaptcha( e.srcElement.id );
+
+	return ajustarNumeroCaptcha( input, e );
+	
+}
+
+function pularCampoCaptchaIE() {
+
+	e = window.event;
+	input = pegaObjCaptcha( e.srcElement.id );
+
+	return pularCampoCaptcha( input, e );
+	
+}
+
+// Função que registra os inputs que precisam ser numéricos e que têm
+// um tamanho fixo que, quando alcançado, muda para o próximo campo.
+// Parâmetros:
+// id: id do <input> que deve capturar os eventos de tecla
+// tamanhoMaximo: o número de dígitos máximo para este campo
+// proximoId: id do próximo campo no formulário para o qual pularemos quando
+//            o número máximo de dígitos for alcançado.
+var inputList = new Array();
+function registraInputCaptcha( id, tamanhoMaximo, proximoId ) {
+
+	inputList[id] = new Array();
+	inputList[id]['tamanho'] = tamanhoMaximo;
+	inputList[id]['proximo'] = proximoId;
+
+	// No IE não funciona setar o atributo via DOM, e o evento não vem como parâmetro
+	// portanto precisamos setar uma função diferente para ele
+	pegaObjCaptcha(id).onkeyup = pularCampoCaptchaIE;
+	pegaObjCaptcha(id).onkeypress = ajustarNumeroCaptchaIE;
+	
+	// O mozilla também aceita a linha anterior, mas aqui nós passamos por cima e
+	// chamamos a função diretamente
+	pegaObjCaptcha(id).setAttribute( 'onKeyUp', 'pularCampoCaptcha(this, event)');
+	pegaObjCaptcha(id).setAttribute( 'onKeyPress', 'return ajustarNumeroCaptcha(this,event)');
+}
+
